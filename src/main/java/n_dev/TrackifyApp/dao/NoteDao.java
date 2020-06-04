@@ -22,7 +22,6 @@ public class NoteDao extends SessionTransactionControl implements GenericDao<Not
 
 	@Override
 	public Note findByID(String id) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -34,8 +33,8 @@ public class NoteDao extends SessionTransactionControl implements GenericDao<Not
 
 	@Override
 	public List<Note> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Note> notes = super.getCurrentSession().createQuery("from Note n").getResultList();
+		return notes;
 	}
 
 }

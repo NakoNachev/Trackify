@@ -1,5 +1,6 @@
 package n_dev.TrackifyApp.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import n_dev.TrackifyApp.dao.NoteDao;
@@ -42,8 +43,12 @@ public class NoteService implements GenericDao<Note> {
 
 	@Override
 	public List<Note> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Note> notes = new ArrayList<Note>();
+		
+		noteDao.openCurrentSessionWithTransaction();
+		notes = noteDao.findAll();
+		noteDao.closeCurrentSessionWithTransaction();
+		return notes;
 	}
 	
 

@@ -9,7 +9,8 @@ public class AddNoteTest {
 		
 		NoteService service = new NoteService();
 		
-		Note note = new Note("testTitle");
+		Note note = new Note("testTitle3");
+		note.setContent("safkafafjAKFajfj");
 		
 		service.persist(note);
 	}

@@ -68,11 +68,20 @@
  			<version>5.4.15.Final</version>
 		</dependency>
 		
+		<!--  JDBC connector -->
 		<dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.connector.version}</version>
         </dependency>
+        
+        <!--  JSTL -->
+        
+        <dependency>
+    		<groupId>javax.servlet</groupId>
+    		<artifactId>jstl</artifactId>
+    		<version>1.2</version>
+		</dependency>
 	</dependencies>
 
 	<repositories>

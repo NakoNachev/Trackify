@@ -18,7 +18,7 @@
         
         </div>
         
-        <a href="home/displayGoals">Go to current goals</a>
+        <a href="home/displayNotes">Go to current goals</a>
         
     </body>
 </html>
