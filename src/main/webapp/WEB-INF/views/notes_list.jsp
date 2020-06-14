@@ -49,6 +49,8 @@
 		 <c:param name="chosenOption" value="${id}"/>  
 		</c:url>  
 	
+	
+<!--  
 	<form action = "editNote">
 		<label> Select note id</label>
 		
@@ -65,6 +67,22 @@
 		<input type="submit" value="Submit">
 	
 	</form>
+
+-->
+
+	<form:form action="editNote" modelAttribute ="optionChoice">
+	
+		<form:select path = "id">
+		
+			<c:forEach var="id" begin="1" end="${notesListSize}">
+			<form:option value = "${id}"> ${id}</form:option>
+			</c:forEach>
+		
+		</form:select>
+		
+		<input type="submit" value="Submit">
+	
+	</form:form>
 	
 	
 	<a href="../"> Go back to home page</a>

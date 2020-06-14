@@ -16,13 +16,14 @@ public class NoteDao extends SessionTransactionControl implements GenericDao<Not
 
 	@Override
 	public void update(Note entity) {
-		// TODO Auto-generated method stub
+		super.getCurrentSession().saveOrUpdate(entity);
 		
 	}
 
 	@Override
-	public Note findByID(String id) {
-		return null;
+	public Note findByID(int id) {
+		Note note = super.getCurrentSession().get(Note.class, id);
+		return note;
 	}
 
 	@Override

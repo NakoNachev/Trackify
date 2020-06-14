@@ -9,7 +9,7 @@ public interface GenericDao<T> {
 	
 	public void update(T entity);
 	
-	public T findByID(String id);
+	public T findByID(int id);
 	
 	public void delete(T entity);
 	

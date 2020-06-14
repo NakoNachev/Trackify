@@ -25,14 +25,19 @@ public class NoteService implements GenericDao<Note> {
 
 	@Override
 	public void update(Note entity) {
-		// TODO Auto-generated method stub
+		noteDao.openCurrentSessionWithTransaction();
+		noteDao.update(entity);
+		noteDao.closeCurrentSessionWithTransaction();
 		
 	}
 
 	@Override
-	public Note findByID(String id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Note findByID(int id) {
+		noteDao.openCurrentSession();
+		Note note = noteDao.findByID(id);
+		noteDao.closeCurrentSession();
+		
+		return note;
 	}
 
 	@Override
