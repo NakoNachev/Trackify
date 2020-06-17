@@ -40,6 +40,11 @@ public class InnerController {
 		EditOptionChoice option = new EditOptionChoice();
 		model.addAttribute("optionChoice",option);
 		
+		// add variable for new note
+		
+		Note newNote = new Note();
+		model.addAttribute("newNote",newNote);
+		
 		return "notes_list";
 	}
 	
@@ -61,6 +66,22 @@ public class InnerController {
 		service.update(editedNote);
 		
 		return "edit_confirmation";
+	}
+	
+	@RequestMapping("/showAddNoteForm/addNoteConfirmation")
+	public String addNewNote(Model model, @ModelAttribute("newNote") Note newNote) {
+		
+		NoteService service = new NoteService();
+		service.persist(newNote);
+		
+		
+		return "add_note_confirmation";
+	}
+	
+	@RequestMapping("/showAddNoteForm")
+	public String showAddNoteForm(Model model,@ModelAttribute("newNote") Note newNote) {
+		
+		return "add_new_note_form";
 	}
 	
 	

@@ -80,10 +80,17 @@
 		
 		</form:select>
 		
-		<input type="submit" value="Submit">
+		<input type="submit" value="Edit">
+	
+	</form:form> <br>
+	
+	
+	<form:form action="showAddNoteForm">
+	
+		Add new note? <input type="submit" value="Add"/>
+		
 	
 	</form:form>
-	
 	
 	<a href="../"> Go back to home page</a>
 
