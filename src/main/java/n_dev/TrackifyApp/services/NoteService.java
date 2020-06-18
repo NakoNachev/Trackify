@@ -3,10 +3,13 @@ package n_dev.TrackifyApp.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import n_dev.TrackifyApp.dao.NoteDao;
 import n_dev.TrackifyApp.entities.Note;
 import n_dev.TrackifyApp.interfaces.GenericDao;
 
+@Service
 public class NoteService implements GenericDao<Note> {
 	
 	private static NoteDao noteDao;

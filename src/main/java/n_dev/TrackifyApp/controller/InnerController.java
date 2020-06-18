@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,15 +20,17 @@ import n_dev.TrackifyApp.services.NoteService;
 @RequestMapping("/home")
 public class InnerController {
 	
-	
+	@Autowired
+	private NoteService noteService;
 	
 	@GetMapping("/displayNotes")
 	public String displayGoals(Model model) {
 		
 		//pass the list with notes to be displayed on the page
-		NoteService service = new NoteService();
+//		NoteService service = new NoteService();
 		List<Note> notes = new ArrayList<Note>();
-		notes = service.findAll();
+//		notes = service.findAll();
+		notes = noteService.findAll();
 		model.addAttribute("notesList",notes);
 		
 		//save the size of he list to be used as a select form 
@@ -51,8 +54,9 @@ public class InnerController {
 	@RequestMapping("/editNote")
 	public String editNote(Model model,@ModelAttribute("optionChoice") EditOptionChoice option) {
 
-		NoteService service = new NoteService();
-		Note editNote = service.findByID(option.getId());
+//		NoteService service = new NoteService();
+//		Note editNote = service.findByID(option.getId());
+		Note editNote = noteService.findByID(option.getId());
 		model.addAttribute("noteToEdit",editNote);
 
 		return "edit_note";
@@ -62,8 +66,10 @@ public class InnerController {
 	@RequestMapping("/editNote/editConfirmation") 
 	public String editNoteConfirmation(Model model, @ModelAttribute("noteToEdit") Note editedNote) {
 		
-		NoteService service = new NoteService();
-		service.update(editedNote);
+//		NoteService service = new NoteService();
+//		service.update(editedNote);
+		
+		noteService.update(editedNote);
 		
 		return "edit_confirmation";
 	}
@@ -71,8 +77,10 @@ public class InnerController {
 	@RequestMapping("/showAddNoteForm/addNoteConfirmation")
 	public String addNewNote(Model model, @ModelAttribute("newNote") Note newNote) {
 		
-		NoteService service = new NoteService();
-		service.persist(newNote);
+//		NoteService service = new NoteService();
+//		service.persist(newNote);
+		
+		noteService.persist(newNote);
 		
 		
 		return "add_note_confirmation";
