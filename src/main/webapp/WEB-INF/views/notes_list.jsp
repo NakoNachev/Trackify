@@ -1,12 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %> 
+
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Current goals</title>
+
+<link type="text/css"
+	  rel = "stylesheet"
+	  href="${pageContext.request.contextPath}/resources/css/style.css" />
+
 </head>
 <body>
 
@@ -75,7 +82,7 @@
 		<form:select path = "id">
 		
 			<c:forEach var="id" begin="1" end="${notesListSize}">
-			<form:option value = "${id}"> ${id}</form:option>
+			<form:option value = "${id}"> ${notesList.get(id-1).getId()}</form:option>
 			</c:forEach>
 		
 		</form:select>
@@ -90,7 +97,28 @@
 		Add new note? <input type="submit" value="Add"/>
 		
 	
+	</form:form> <br>
+	
+	
+	
+	<form:form action="deleteNote" modelAttribute="optionChoice">
+	
+		Delete note: 
+		
+		<form:select path = "id">
+		
+			<c:forEach var="id" begin="1" end="${notesListSize}">
+			<form:option value = "${notesList.get(id-1)}"> ${notesList.get(id-1).getId()}</form:option>
+			</c:forEach>
+		
+		</form:select>
+		
+		<input type="submit"
+							onclick="if (!(confirm('Are you sure you want to delete this customer?'))) return false" value="Delete"/>
+	
 	</form:form>
+	
+	
 	
 	<a href="../"> Go back to home page</a>
 

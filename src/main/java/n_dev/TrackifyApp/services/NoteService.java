@@ -45,7 +45,9 @@ public class NoteService implements GenericDao<Note> {
 
 	@Override
 	public void delete(Note entity) {
-		// TODO Auto-generated method stub
+		noteDao.openCurrentSessionWithTransaction();
+		noteDao.delete(entity);
+		noteDao.closeCurrentSessionWithTransaction();
 		
 	}
 

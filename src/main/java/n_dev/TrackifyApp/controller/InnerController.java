@@ -77,12 +77,7 @@ public class InnerController {
 	@RequestMapping("/showAddNoteForm/addNoteConfirmation")
 	public String addNewNote(Model model, @ModelAttribute("newNote") Note newNote) {
 		
-//		NoteService service = new NoteService();
-//		service.persist(newNote);
-		
 		noteService.persist(newNote);
-		
-		
 		return "add_note_confirmation";
 	}
 	
@@ -90,6 +85,15 @@ public class InnerController {
 	public String showAddNoteForm(Model model,@ModelAttribute("newNote") Note newNote) {
 		
 		return "add_new_note_form";
+	}
+	
+	@RequestMapping("/deleteNote")
+	public String deleteNote(Model model,@ModelAttribute("optionChoice") EditOptionChoice option) {
+		
+		Note noteToDelete = noteService.findByID(option.getId());
+		noteService.delete(noteToDelete);
+		
+		return "delete_confirmation";
 	}
 	
 	

@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
-@ComponentScan(basePackages="n_dev.TrackifyApp")
+@ComponentScan(basePackages="n_dev.TrackifyApp.controller")
 @EnableWebMvc
 public class MvcConfiguration implements WebMvcConfigurer{
 
@@ -28,5 +28,4 @@ public class MvcConfiguration implements WebMvcConfigurer{
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 	}
 
-	
 }

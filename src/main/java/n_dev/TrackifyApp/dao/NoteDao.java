@@ -2,6 +2,8 @@ package n_dev.TrackifyApp.dao;
 
 import java.util.List;
 
+import org.hibernate.query.Query;
+
 import n_dev.TrackifyApp.business_logic.SessionTransactionControl;
 import n_dev.TrackifyApp.entities.Note;
 import n_dev.TrackifyApp.interfaces.GenericDao;
@@ -28,7 +30,12 @@ public class NoteDao extends SessionTransactionControl implements GenericDao<Not
 
 	@Override
 	public void delete(Note entity) {
-		// TODO Auto-generated method stub
+		
+		Query query = super.getCurrentSession().createQuery("delete from Note n where n.id=:id");
+		
+		query.setParameter("id", entity.getId());
+		
+		query.executeUpdate();
 		
 	}
 
